@@ -1,11 +1,11 @@
 <h2 align="center"><%= @category.name %> Articles</h2>
 
 <div class="center">
-  <%= will_paginate @category_articles %>
+  <%= will_paginate @category.articles %>
 </div>
 
-<%= render "articles/article", obj: @category_articles %>
+<%= render "articles/article", obj: @category.articles %>
 
 <div class="center">
-  <%= will_paginate @category_articles %>
+  <%= will_paginate @category.articles %>
 </div>
