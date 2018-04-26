@@ -16,10 +16,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
-      flash[:success] = 'Article was successfully created'
+      flash[:success] = "Article was successfully created"
       redirect_to article_path(@article)
     else
-      render 'new'
+      render "new"
     end
   end
   
@@ -29,23 +29,23 @@ class ArticlesController < ApplicationController
   
   def update
     if @article.update(article_params)
-      flash[:success] = 'Article was successfully updated'
+      flash[:success] = "Article was successfully updated"
       redirect_to article_path(@article)
     else
-      render 'edit'
+      render "edit"
     end
   end
   
   def show
     if @article.nil?
-      flash[:danger] = 'Article not found'
+      flash[:danger] = "Article not found"
       redirect_to articles_path
     end
   end
   
   def destroy
     @article.destroy
-    flash[:danger] = 'Article successfully deleted'
+    flash[:danger] = "Article successfully deleted"
     redirect_to articles_path
   end
   
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
   end
   
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
   
   def require_same_user

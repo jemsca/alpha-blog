@@ -7,19 +7,26 @@
         Author: <%= link_to gravatar_for(@article.user, { size: 20 }), user_path(@article.user) %>
         <%= link_to @article.user.username, user_path(@article.user) %>
         <%= pluralize(@article.user.articles.count, "article") if @article.user.articles %>
-      </small>            
+      </small>
     </div>
   <% end %>
   <%= simple_format(@article.description) %>
+  <% if @article.categories.any? %>
+    <div class="article-meta-details">
+      <small> 
+        Categories: <%= render @article.categories %>
+      </small>
+    </div>
+  <% end %>
   <div class="article-actions">
     <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
-      <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-xs btn-primary" %>
-      <%= link_to 'Delete',
+      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+      <%= link_to "Delete",
         article_path(@article),
         method: :delete,
         data: { confirm: "Are you sure you want to delete the article?" },
         class: "btn btn-xs btn-danger" %>
     <% end %>
-    <%= link_to 'View Articles', articles_path, class: "btn btn-xs btn-success" %>
+    <%= link_to "View Articles", articles_path, class: "btn btn-xs btn-success" %>
   </div>
 </div>

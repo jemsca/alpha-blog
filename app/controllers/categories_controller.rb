@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category_articles = Article.find(ArticleCategory.find_by([category_id: @category.id])).paginate(page: params[:page], per_page: 5)
+    @category_articles = @category.articles.paginate(page: params[:page], per_page: 5)
   end
   
   def index
