@@ -8,7 +8,8 @@ class CategoriesControllerTest < ActionController::TestCase
       username: "janet",
       email: "janet@jems.ca",
       password: "Password",
-      admin: true)
+      admin: true
+    )
   end
   
   test "should get categories index" do
@@ -23,7 +24,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
   
   test "should get show" do
-    get(:show, {"id" => @category.id})
+    get(:show, { "id" => @category.id })
     assert_response :success
   end
   
